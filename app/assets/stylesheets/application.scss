@@ -13,3 +13,16 @@
 @import "layouts/index";
 @import "components/index";
 @import "pages/index";
+
+html, body{
+  height:100%;
+}
+
+.mole{
+  background-color:#000000;
+  background-image:url(http://www.mantlelabs.com/flashlight/images/flashlight.jpg);
+  background-repeat:no-repeat;
+  background-position:50% 50%;
+  cursor:crosshair;
+  color: black;
+}
