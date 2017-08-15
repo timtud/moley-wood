@@ -16,6 +16,7 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'devise'
+gem 'faker'
 
 group :development, :test do
   gem 'pry-byebug'
