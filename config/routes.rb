@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   end
 
   resources :response, only: [:destroy, :update]
+
+  resources :pages, only: [:show]
 end
