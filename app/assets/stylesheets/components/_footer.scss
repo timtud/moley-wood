@@ -1,11 +1,14 @@
 .footer {
   background: black;
+  position: relative;
+  bottom: 0px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 100px;
   padding: 0px 50px;
-  color: white;
+  color: rbga(255,255,255,1.0);
 }
 .footer-links {
   display: flex;

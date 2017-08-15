@@ -10,8 +10,8 @@
   </head>
   <body>
     <%= render "layouts/navbar" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
+    <%= render 'layouts/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= render "layouts/footer" %>
