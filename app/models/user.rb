@@ -9,13 +9,8 @@ has_many :applicants
 has_many :user_skills
 
 validates :email, presence: true, uniqueness: true
-validates :first_name, presence: true, uniqueness: true
-validates :last_name, presence: true, uniqueness: true
-validates :bio, presence: true
-validates :gender, presence: true
-validates :age, presence: true
-validates :profile_picture, presence: true
-
+validates :first_name, presence: true
+validates :last_name, presence: true
 end
 
 
