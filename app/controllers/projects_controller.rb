@@ -16,7 +16,10 @@ class ProjectsController < ApplicationController
     @project = Projet.new(project_params)
     @project.user_id = current_user.id
     if @project.save
-      redirect_to :
+      redirect_to project_path(@project)
+    else
+      render 'project/new'
+    end
   end
 
   def edit
