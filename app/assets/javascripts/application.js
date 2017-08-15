@@ -3,6 +3,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+
 $(document).ready(function() {
 $("body").keyup(function(e){
   if(e.keyCode === 77)

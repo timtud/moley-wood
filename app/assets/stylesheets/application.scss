@@ -15,9 +15,11 @@
 @import "pages/index";
 @import "users/index";
 
-html, body{
-  height:100%;
+html{
+  position: relative;
+  height:  100%;
 }
+
 
 .mole{
   background-color:#000000;
