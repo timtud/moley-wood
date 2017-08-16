@@ -1,11 +1,27 @@
 <h1>index for projects</h1>
 
-<%= form_for(projects_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, value = "", name: "search[:description]" , placeholder: "Search description" %>
-<%= text_field_tag :search, value = "", name: "search[:title]" , placeholder: "Search titles" %>
-<%= submit_tag "Search descriptions" %>
-<% end %>
+<div class="container_searchbar">
+	<%= form_for(projects_path, :method => "get", id: "search-form") do %>
+	<div class="container_searchfield",>
+		<p>Description</p>
+		<div class="container_text">
+			<%= text_field_tag :search, value = "", name: "search[:description]" , placeholder: "Search description" %>
+		</div>
+	</div>
+	<div class="container_searchfield">
+		<div class="container_text">
+			<p>Title</p>
+			<%= text_field_tag :search, value = "", name: "search[:title]" , placeholder: "Search titles" %>
+		</div>
+	</div>
+	<div class="container_searchfield">
+		<p>Job</p>
+	<%= collection_select(:search, :skill_id, Skill.all, :id, :title, {:prompt => ""} ) %>
+	</div>
 
+	<%= submit_tag "Search descriptions" %>
+	<% end %>"
+</div>
 
 
 
@@ -14,6 +30,8 @@
 <% else %>
   <p>There are no projects containing the term(s) <%= params[:search] %>.</p>
 <% end %>
+
+
 
 
 

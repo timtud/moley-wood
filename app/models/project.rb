@@ -15,9 +15,8 @@ class Project < ApplicationRecord
       where("description ILIKE ?", "%#{search[":description"]}%")
     elsif search[":title"]
       where("title ILIKE ?", "%#{search[":title"]}%")
+    elsif search[":skills.title"]
+		where("title ILIKE ?", "%#{search[":skills.title"]}%")
     end
   end
-
-
-
 end
