@@ -1,17 +1,29 @@
 class ProjectsController < ApplicationController
 
-  def index
-    @projects = current_user.projects.all
+   def index
+
+    if params[:search]
+
+      @projects = Project.search(params[:search]).order("created_at DESC")
+    # elsif params[:search]
+    #   @projects = Project.search(params[:search2]).order("created_at DESC")
+    else
+      @projects = Project.all.order('created_at DESC')
+    end
+
+
   end
+
 
   def show
     @project = Project.find(params[:id])
     @job = Job.new
   end
 
-  def new
-    @project = Project.new
-  end
+  # def new
+  #   @project = Project.new
+  # end
+
 
   def create
     @project = Project.new(project_params)
@@ -23,22 +35,22 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def edit
+  # def edit
 
-  end
+  # end
 
-  def update
+  # def update
 
-  end
+  # end
 
-  def destroy
+  # def destroy
 
-  end
+  # end
 
-  private
+  # private
 
-  def project_params
-    params.require(:project).permit(:title, :description, :schedule, :location)
-  end
+  # def project_params
+  #   params.require(:project).permit(:title, :description, :schedule, :location)
+  # end
 
 end

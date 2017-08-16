@@ -1,0 +1,22 @@
+<h1>index for projects</h1>
+
+<%= form_for(projects_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, value = "", name: "search[:description]" , placeholder: "Search description" %>
+<%= text_field_tag :search, value = "", name: "search[:title]" , placeholder: "Search titles" %>
+<%= submit_tag "Search descriptions" %>
+<% end %>
+
+
+
+
+<% if @projects.any? %>
+ <%= render @projects %>
+<% else %>
+  <p>There are no projects containing the term(s) <%= params[:search] %>.</p>
+<% end %>
+
+
+
+
+
+
