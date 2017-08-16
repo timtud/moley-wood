@@ -7,7 +7,7 @@ class JobsController < ApplicationController
     if @job.save
       redirect_to project_path(Project.find(params[:project_id]))
     else
-      render 'project/show'
+      render 'projects/show'
     end
   end
 
