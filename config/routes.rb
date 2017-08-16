@@ -11,11 +11,13 @@ Rails.application.routes.draw do
     resources :host_reviews, only: [:create]
   end
 
-  resources :jobs, only: [ ] do
+  resources :jobs, only: [:destroy ] do
     resources :job_review, only: [ :create ] do
       resources :response, only: [:create]
     end
   end
 
   resources :response, only: [:destroy, :update]
+
+  resources :pages, only: [:show]
 end

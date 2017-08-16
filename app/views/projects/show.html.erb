@@ -1,1 +1,22 @@
-<h2>hello goncalo</h2>
+
+<div class="container ">
+<div class="text-center">
+  <h1>  <%= @project.title %></h1>
+
+</div>
+<div class="list-group">
+  <% @project.jobs.each do |job| %>
+    <% skill = Skill.find(job.skill_id) %>
+    <li class="list-group-item item">
+      <h4 class="list-group-item-heading"> <%= skill.title %>
+      <%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, job_path(job), class: 'btn btn-danger del ' , method: :delete, data: { confirm: 'Are you certain you want to delete this?' }  %></h4>
+    </li>
+    <% end %>
+</div>
+
+<%= simple_form_for [@project, @job] do |f| %>
+  <%=f.input :skill_id , collection: Skill.all  %>
+  <%= f.submit "Add job", class: 'btn btn-primary' %>
+  <%= link_to 'Back', projects_path, class: 'btn btn-danger' %>
+<% end %>
+</div>

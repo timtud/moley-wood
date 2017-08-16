@@ -16,19 +16,24 @@ class ProjectsController < ApplicationController
 
 
   def show
-    @project = params[:id]
+    @project = Project.find(params[:id])
+    @job = Job.new
   end
 
   # def new
   #   @project = Project.new
   # end
 
-  # def create
-  #   @project = Projet.new(project_params)
-  #   @project.user_id = current_user.id
-  #   if @project.save
-  #     redirect_to :
-  # end
+
+  def create
+    @project = Project.new(project_params)
+    @project.user_id = current_user.id
+    if @project.save
+      redirect_to project_path(@project)
+    else
+      render 'project/new'
+    end
+  end
 
   # def edit
 
