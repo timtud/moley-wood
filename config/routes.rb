@@ -12,9 +12,8 @@ Rails.application.routes.draw do
   end
 
   resources :jobs, only: [:destroy ] do
-    resources :job_review, only: [ :create ] do
-      resources :response, only: [:create]
-    end
+    resources :job_review, only: [ :create ]
+    resources :response, only: [:create]
   end
 
   resources :response, only: [:destroy, :update]

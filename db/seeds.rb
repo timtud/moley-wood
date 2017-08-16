@@ -24,4 +24,35 @@ puts 'Creating users...'
 
 end
 
+
+skills = ["Director",
+"Assistant Director",
+"Producer",
+"Line Producer",
+"Script Supervisor",
+"Director of Photography",
+"Camera Operator",
+"Camera Assistant",
+"Steadicam",
+"Casting Director",
+"Costume/Wardrobe",
+"Hair/Make-up",
+"Production Assistant",
+"Grip",
+"Gaffer",
+"Boom Operator",
+"Sound Mixer",
+"Art Director",
+"Prop Master",
+"Craft Services",
+"Special Effects",
+"Stunts",
+"Transportation",
+"Post-Production"]
+
+skills.each do |skill|
+  Skill.create(title: skill)
+end
+
 puts 'Finished!'
+
