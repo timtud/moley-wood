@@ -3,15 +3,12 @@ class ProjectsController < ApplicationController
    def index
 
     if params[:search]
-
       @projects = Project.search(params[:search]).order("created_at DESC")
      elsif params[:search]
        @projects = Project.search(params[:search2]).order("created_at DESC")
     else
       @projects = Project.all.order('created_at DESC')
     end
-
-
   end
 
 
@@ -31,26 +28,26 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to project_path(@project)
     else
-      render 'projects'
+      render 'projects/new'
     end
   end
 
-  # def edit
+  def edit
 
-  # end
+  end
 
-  # def update
+  def update
 
-  # end
+  end
 
-  # def destroy
+  def destroy
 
-  # end
+  end
 
-  # private
+  private
 
   def project_params
-  params.require(:project).permit(:title, :description, :schedule, :location)
+    params.require(:project).permit(:title, :description, :schedule, :location)
   end
 
 end

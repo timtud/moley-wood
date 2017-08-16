@@ -8,7 +8,6 @@ class JobsController < ApplicationController
       redirect_to project_path(Project.find(params[:project_id]))
     else
       render 'projects/show'
-
     end
   end
 

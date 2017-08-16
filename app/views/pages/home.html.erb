@@ -1,19 +1,44 @@
 <div class="banner text-center">
-  <%= image_tag("moleywood_banner_sparkling", size: "1000x500") %>
+  <div class="mole-banner">
+    <%= image_tag "moleywood_background_banner", size: "1000x500" %>
+    <div class="rel">
+      <div class="mole-image" >
+        <div class="mole-head">
+          <%= image_tag "agent_moleder_body", class: 'mole-body ', id: "mole" %>
+        </div>
+        <div class="mole-dirt">
+          <%= image_tag "agent_moleder_dirt", class: 'mole-body' %>
+        </div>
+      </div>
+    </div>
+     <div class="giant-mole-head">
+          <%= image_tag "agent_moleder_body", class: "expandUp", id: "mole-big"%>
+        </div>
+  </div>
 
-<div class="fluid-two">
-  <%= image_tag("cloud") %>
+  <div class="fluid-two">
+    <%= image_tag("cloud") %>
+  </div>
+
+  <div class="row">
+    <h2>Can you dig it?</h2>
+  </div>
+  <div class="row">
+    <h3>Find work experience in the film sector</h3>
+  </div>
 </div>
 
-<div class="row">
-  <h2>Can you dig it?</h2>
-</div>
-<div class="row">
-  <h3>Find work experience in the film sector</h3>
-</div>
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
 
-</div>
-<script>
+    function doStuff() {
+      $(document).ready(function() {
+        $('#mole').toggleClass('expandUp');
+        $('#mole-big').toggleClass('expandUp');
+      });
+      setTimeout(doStuff, 5000);
+   }
+   doStuff();
+  <% end %>
+<% end %>
 
-  $(".navbar-wagon").hide()
-</script>
