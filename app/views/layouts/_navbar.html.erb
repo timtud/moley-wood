@@ -66,17 +66,20 @@
 
 
 
-
-
+<%= content_for :after_js do %>
 <script>
+$(document).ready(function() {
   $(function(){
-    $("buttonx").on({
+    $(".buttonx").on({
         mouseover:function(){
             $(this).css({
+
                 left:(Math.random()*200)+"px",
                 top:(Math.random()*200)+"px",
             });
         }
     });
 });
+});
 </script>
+<% end %>
