@@ -1,0 +1,14 @@
+<%= simple_form_for [@job, @response] do |f| %>
+  <%= f.input :submit, :as => :hidden, :input_html => { :value => "pending"} %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
+
+<%= simple_form_for [@response] do |f| %>
+  <%= f.input :status, :as => :hidden, :input_html => { :value => "accepted" } %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
+
+<%= simple_form_for [@response] do |f| %>
+  <%= f.input :status, :as => :hidden, :input_html => { :value => "denied" } %>
+  <%= f.button :submit, class: "btn btn-danger" %>
+<% end %>

@@ -1,5 +1,15 @@
-<%= project.title%>
-
-<%= project.description%>
-<% a = project.jobs %>
-<%= puts a %>
+<% projects_by_subject.each do |project_by_subject| %>
+	<div class="boxx" style="position: relative; display:flex-center;">
+	    <div class="col-xs-12 col-sm-4">
+		    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://www.mormontransitions.org/wp-content/uploads/2015/12/Movie-making4.jpg');">
+		  		<div class="card-category"><%= project_by_subject.project.location %></div>
+		  			<div class="card-description">
+		    			<h2><%= project_by_subject.project.title %></h2>
+		    			<p><%= project_by_subject.project.description %></p>
+		    		</div>
+		    	<img class="card-user" src="https://placehold.it/300x300.png">
+		    	<a class="card-link" href="#" ></a>
+			</div>
+		</div>
+	</div>
+<% end %>

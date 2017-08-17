@@ -25,3 +25,96 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=‘#177deb ’
   top:100px;
   right:75px;
 }
+
+.mole-banner {
+  position: relative;
+}
+
+.rel {
+  position: absolute;
+   top: 69%;
+   left: 46.2%;
+}
+
+
+.mole-image {
+  position: relative;
+  right: 4%;
+}
+
+.mole-head {
+  position: absolute;
+}
+
+.mole-dirt {
+  position: absolute;
+
+}
+.mole-body {
+  height: 120px;
+}
+
+#mole {
+  opacity: 0;
+}
+#mole-big {
+  opacity: 0;
+}
+
+.giant-mole-head {
+  position: absolute;
+
+}
+
+.giant-mole-head img{
+  position: absolute;
+  height: 500px;
+}
+
+.expandUp{
+  animation-name: expandUp;
+  -webkit-animation-name: expandUp;
+
+  animation-duration: 0.5s;
+  -webkit-animation-duration: 0.5s;
+
+  animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
+  opacity: 1 !important;
+  //visibility: visible !important;
+}
+@keyframes expandUp {
+  0% {
+    transform: translateY(100%) scale(0.6) scaleY(0.5);
+    opacity: 0;
+  }
+  60%{
+    transform: translateY(-10%) scaleY(1.12);
+    opacity: 0.9;
+  }
+  75%{
+    transform: translateY(10%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0%) scale(1) scaleY(1);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes expandUp {
+  0% {
+    -webkit-transform: translateY(100%) scale(0.6) scaleY(0.5);
+  }
+  60%{
+    -webkit-transform: translateY(0%) scaleY(1);
+  }
+  75%{
+    -webkit-transform: translateY(3%);
+  }
+  100% {
+    -webkit-transform: translateY(0%) scale(1) scaleY(1);
+  }
+}
+
+

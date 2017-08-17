@@ -1,26 +1,35 @@
 class ProjectsController < ApplicationController
 
   def index
-    if params[:search]
+    @projects_by_subject = []
+    if params[:search] && !params[:search][:skill_id].empty?
       @skill = Skill.find(params[:search][:skill_id])
-
-      Project.create(title: "AAAAAA", description:"BBBBB", location: "Lisbon" )
 
       @projects = Project.search(params[:search]).order("created_at DESC")
 
-      Job.create(project_id: @projects.first.id, skill_id: @skill.id)
-
-      @projects.map do |project|
-        project.jobs.where(skill_id: @skill.id)
+      # Job.create(project_id: @projects.first.id, skill_id: @skill.id)
+      @projects.each do |project|
+        @projects_by_subject << project.jobs.where(skill_id: @skill.id)
       end
-      raise
+      
+      @projects_by_subject.flatten!
+
     else
       @projects = Project.all.order('created_at DESC')
+
+    end
+    @projects = Project.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@projects) do |flat, marker|
+      marker.lat flat.latitude
+      marker.lng flat.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { project: project })
     end
   end
 
   def show
-    @project = params[:id]
+    @project = Project.find(params[:id])
+    @job = Job.new
   end
 
   def new
@@ -30,6 +39,12 @@ class ProjectsController < ApplicationController
   def create
     @project = Projet.new(project_params)
     @project.user_id = current_user.id
+    if @project.save
+      redirect_to project_path(@project)
+    else
+      render 'projects/new'
+    end
+
   end
 
   def edit

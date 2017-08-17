@@ -1,3 +1,6 @@
+<%= content_for(:title) do %>
+  MoleyWood - <%= @project.title %>
+<%= end %>
 
 <div class="container ">
 <div class="text-center">
@@ -20,3 +23,11 @@
   <%= link_to 'Back', projects_path, class: 'btn btn-danger' %>
 <% end %>
 </div>
+
+<%= content_for(:after_js) do %>
+  <script>
+    $(document).ready(function() {
+      alert('Welcome to <%= j @project.title %>');
+    });
+  </script>
+<%= end %>
