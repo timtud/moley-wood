@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
 
   #devise_for :users
-devise_for :users, :controllers => { :registrations => :registrations }
+  devise_for :users, :controllers => { :registrations => :registrations, omniauth_callbacks: 'users/omniauth_callbacks' }
+
+ # devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:show]
@@ -17,10 +19,10 @@ devise_for :users, :controllers => { :registrations => :registrations }
 
   resources :jobs, only: [:destroy ] do
     resources :job_review, only: [ :create ]
-    resources :response, only: [:create]
+    resources :responses, only: [:create]
   end
 
-  resources :response, only: [:destroy, :update]
+  resources :responses, only: [:destroy, :update]
 
   resources :pages, only: [:show]
 end

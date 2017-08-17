@@ -8,6 +8,7 @@ gem 'puma'
 gem 'rails', '5.0.5'
 gem 'redis'
 gem 'geocoder'
+gem 'omniauth-facebook'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
@@ -35,7 +36,6 @@ end
 
 
 group :development, :test do
-
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-byebug'
