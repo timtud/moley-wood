@@ -16,19 +16,6 @@
       </div>
   </div>
 
-<!--
-
-  <div class="row">
-    <ul>
-      <%= @project.each do |job| %>
-      <li> <%= job[:skill] %></li>
-      <% end %>
-    </ul>
-  </div>
-
-  -->
-
-
   <div class="list-group">
     <% @project.jobs.each do |job| %>
       <% skill = Skill.find(job.skill_id) %>
@@ -39,10 +26,13 @@
       <% end %>
   </div>
 
-  <%= simple_form_for [@project, @job] do |f| %>
-    <%=f.input :skill_id , collection: Skill.all  %>
-    <%= f.submit "Add job", class: 'btn btn-primary' %>
-    <%= link_to 'Back', projects_path, class: 'btn btn-danger' %>
+
+  <% if current_user = @project.user %>
+    <%= simple_form_for [@project, @job] do |f| %>
+      <%=f.input :skill_id , collection: Skill.all  %>
+      <%= f.submit "Add job", class: 'btn btn-primary' %>
+      <%= link_to 'Back', projects_path, class: 'btn btn-danger' %>
+    <% end %>
   <% end %>
 </div>
 
