@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
+protect_from_forgery with: :exception
   def show
-    @users = current_user
+    @user = current_user
   end
 end
