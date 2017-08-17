@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
 
+
   def index
     @projects_by_subject = []
     if params[:search] && !params[:search][:skill_id].empty?
@@ -16,14 +17,6 @@ class ProjectsController < ApplicationController
 
     else
       @projects = Project.all.order('created_at DESC')
-
-    end
-    @projects = Project.where.not(latitude: nil, longitude: nil)
-
-    @hash = Gmaps4rails.build_markers(@projects) do |flat, marker|
-      marker.lat flat.latitude
-      marker.lng flat.longitude
-      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { project: project })
     end
   end
 
@@ -44,8 +37,6 @@ class ProjectsController < ApplicationController
     else
       render 'projects/new'
     end
-
-  end
 
   def edit
 

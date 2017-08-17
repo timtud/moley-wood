@@ -23,7 +23,6 @@ puts 'Creating users...'
 		)
 end
 
-
 skills = ["Director",
 "Assistant Director",
 "Producer",

@@ -1,7 +1,7 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag ("moleywood.png") %>
+    <%= cl_image_tag ("moleywood_maszj1") %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -10,8 +10,8 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Projects", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Jobs", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "New Project", "projects/new", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
