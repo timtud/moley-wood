@@ -3,6 +3,8 @@ class ResponsesController < ApplicationController
   def create
     @response = Response.new(response_params)
     @response.user_id = current_user.id
+    @response.job = Job.find(params[:job_id])
+    @project = @response.job.project
     if @response.save
       redirect_to project_path(@project)
     else
@@ -12,6 +14,8 @@ class ResponsesController < ApplicationController
 
   def update
     @response.update(response_params)
+    @project = @response.job.project
+    redirect_to project_path(@project)
   end
 
   def destroy
@@ -25,6 +29,6 @@ class ResponsesController < ApplicationController
   end
 
   def response_params
-    params.require(:response).permit(:job_id, :status)
+    params.require(:response).permit( :status)
   end
 end
