@@ -7,3 +7,8 @@
 .container_searchfield {
 	display: inline-block;
 }
+
+#eventForm .form-control-feedback {
+    top: 0;
+    right: -15px;
+}
