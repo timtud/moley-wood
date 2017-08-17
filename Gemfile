@@ -20,6 +20,11 @@ gem 'devise'
 gem 'faker'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+
 
 gem 'coffee-rails'
 gem 'gmaps4rails'

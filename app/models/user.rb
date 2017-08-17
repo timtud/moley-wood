@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+
+has_attachment :profile_picture
+
 has_many :projects
 has_many :applicants
 has_many :user_skills

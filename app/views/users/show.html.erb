@@ -1,18 +1,24 @@
+
 <div class="container">
   <div class="row">
     <div class="stat col-xs-4">
       <div class="stat-content">
-        <img src="https://image.flaticon.com/icons/png/512/78/78373.png" width="150">
-        <h4><%= @user.name %></h4>
-        <p>Age</p>
-        <p>Gender</p>
-        <p>Education</p>
+      <% if @user.profile_picture? %>
+      <%= cl_image_tag @user.profile_picture.path, width: 150, height: 150, crop: :fill %>
+      <% end %>
+        <h2><%= @user.first_name %> <%= @user.last_name%></h4>
+        <% if @user.age != nil %> <p><%= @user.age%>years old</p><%end%>
+        <% if @user.gender != nil %> <p><%= @user.gender%></p><%end%>
+
+
+
+        <%= link_to 'edit user', edit_user_registration_path(@user)%>
       </div>
     </div>
     <div class="stat col-xs-7">
       <div class="stat-content">
         <h3>Bio</h3>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.</p>
+        <p><%= @user.bio%></p>
       </div>
     </div>
     <div class="row">
