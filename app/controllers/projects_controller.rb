@@ -2,22 +2,29 @@ class ProjectsController < ApplicationController
 
 
   def index
-    @projects_by_subject = []
-    if params[:search] && !params[:search][:skill_id].empty?
-      @skill = Skill.find(params[:search][:skill_id])
+    params[:search] ||= {}
+    #@projects_by_subject = []
 
-      @projects = Project.search(params[:search]).order("created_at DESC")
+    # if params[:search]
+    #   @projects = Project.where(nil)
+    #   @projects = projects.where(schedule: params[:search][:schedule]) if params[:search][:schedule]
+    #   @projects = projects.where(schedule: params[:search][:schedule]) if params[:search][:schedule]
+    #   @projects = projects.where(schedule: params[:search][:schedule]) if params[:search][:schedule]
+    #   @projects.all
 
-      # Job.create(project_id: @projects.first.id, skill_id: @skill.id)
-      @projects.each do |project|
-        @projects_by_subject << project.jobs.where(skill_id: @skill.id)
-      end
+    # if params[:search] && !params[:search][:skill_id].empty?
+    #   @skill = Skill.find(params[:search][:skill_id])
 
-      @projects_by_subject.flatten!
+    #   @projects = Project.search(params[:search]).order("created_at DESC")
 
-    else
-      @projects = Project.all.order('created_at DESC')
-    end
+    #   # Job.create(project_id: @projects.first.id, skill_id: @skill.id)
+    #   @projects.each do |project|
+    #     @projects_by_subject << project.jobs.where(skill_id: @skill.id)
+    #   end
+
+    #   @projects_by_subject.flatten!
+
+    @jobs = Job.search(params[:search]).order('created_at DESC')
   end
 
   def show

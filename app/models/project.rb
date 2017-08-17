@@ -10,15 +10,4 @@ class Project < ApplicationRecord
 
 
 
-  def self.search(search)
-    if search[":location"] && search[":description"] && search[":skill_id"]
-      where("location ILIKE ?", "%#{search[":location"]}%").where("description ILIKE ?", "%#{search[":description"]}%").where("title ILIKE ?", "%#{search[":title"]}%")
-    elsif search[":location"]
-      where("location ILIKE ?", "%#{search[":location"]}%")
-    elsif search[":description"]
-      where("description ILIKE ?", "%#{search[":description"]}%")
-    elsif search[":skills_id"]
-		  where("skills.title ILIKE ?", "%#{search[":skills.title"]}%")
-    end
-  end
 end

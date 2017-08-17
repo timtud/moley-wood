@@ -1,53 +1,66 @@
-<h1 class="text-center">Index for Projects</h1>
+<h1 class="text-center">Jobs</h1>
 
 <div class="container_searchbar">
-	<%= form_for(projects_path, :method => "get", id: "search-form") do %>
-	<div class="container_searchfield">
+	<%= form_tag(projects_path, method: :get, id: "search-form") do %>
+	<div class="col-xs-3 container_searchfield">
 		<p>Where</p>
 		<div class="container_text">
-			<%= text_field_tag :search, value = "", name: "search[:location]" , placeholder: "Anywhere" %>
+			<%= text_field_tag :search, value = "", name: "search[location]" , placeholder: "Anywhere" %>
 		</div>
 	</div>
-	<div class="container_searchfield">
-		<div class="container_text">
-			<p>When</p>
-			<%= text_field_tag :search, value = "", name: "search[:schedule]" , placeholder: "Anytime" %>
-		</div>
-	</div>
-	<div class="container_searchfield">
+    <div class="form-group">
+        <label class="control-label"></label>
+        <div class="col-xs-3 date">
+            <div class="input-group input-append date" id="datePicker">
+            <p>When</p>
+                <%= text_field_tag "search[schedule]", {}, placeholder: "Anytime", value: params[:search][:schedule] %>
+                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+            </div>
+        </div>
+    </div>
+
+	<div class="col-xs-3 container_searchfield">
 		<p>Role</p>
-		<%= collection_select(:search, :skill_id, Skill.all, :id, :title, {:prompt => ""} ) %>
+		<%= collection_select(:search, :skill_id, Skill.all.order("title ASC"), :id, :title, {:prompt => ""} ) %>
 	</div>
 
-	<!-- <input type="submit" class="btn btn-primary" value="Dig for projects"> -->
-	<%= submit_tag "Dig for projects" %>
-	<% end 	%>	
+	<div class="col-xs-3">
+		<%= submit_tag "Dig for projects" %>
+		<% end 	%>	
+	</div>
 </div>
 
-<% if @projects_by_subject.any? %>
+<% if @jobs.any? %>
 	<div class="container">
-		<%= render "project" , projects_by_subject: @projects_by_subject %>
+		<%= render "project" , projects_by_subject: @jobs %>
 	</div>
 <% else %>
 	<p>There are no projects containing the term(s) <%= params[:search] %></p>
 <% end %>
 
 
-<div id="map" style="width: 600px; height: 400px;"></div>
+<%= content_for :after_js do %>
+	<script>
+	$('#datePicker').datepicker({
+	        autoclose: true,    // It is false, by default
+	        format: 'dd/mm/yyyy'
+	    }).on('changeDate', function(e) {
+	        
+	    });
+	</script>
 
-<% content_for(:after_js) do %>
-  <script type="text/javascript" do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
+	<script>
+	$(document).ready(function() {
+	    $('#datePicker')
+	        .datepicker({
+	            autoclose: true,
+	            format: 'dd/mm/yyyy'
+	        })
+	        .on('changeDate', function(e) {
+	            // Revalidate the date field
+	            $('#eventForm').formValidation('revalidateField', 'date');
+	        });
+
+	    });
+	</script>
 <% end %>
