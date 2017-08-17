@@ -8,6 +8,7 @@ gem 'puma'
 gem 'rails', '5.0.5'
 gem 'redis'
 gem 'geocoder'
+gem 'omniauth-facebook'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'

@@ -1,0 +1,14 @@
+<% if job.job_review %>
+  <% review = job.job_review %>
+    <div class="review">
+      <p><% review.rating.times do %><i style="color: #e5d200;" class="fa fa-star" aria-hidden="true"></i><% end %></p>
+      <p><%= review.content %></p>
+    </div>
+  <% end %>
+<% else %>
+  <%= simple_form_for [job, @job_review] do |f| %>
+    <%= f.input :content %>
+    <%= f.input :rating, collection: [1,2,3,4,5] %>
+     <%= f.submit "Add a review", class: "btn btn-primary" %>
+    <% end %>
+<% end %>
