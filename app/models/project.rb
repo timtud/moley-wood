@@ -7,17 +7,19 @@ class Project < ApplicationRecord
   validates :schedule, presence: true
   validates :location, presence: true
 
+  geocoded_by :location
+  after_validation :geocode, if: :location_changed?
+
 
   def self.search(search)
-    if search[":description"] && search[":title"]
-      where("description ILIKE ?", "%#{search[":description"]}%").where("title ILIKE ?", "%#{search[":title"]}%")
+    if search[":location"] && search[":description"] && search[":skill_id"] 
+      where("location ILIKE ?", "%#{search[":location"]}%").where("description ILIKE ?", "%#{search[":description"]}%").where("title ILIKE ?", "%#{search[":title"]}%")
+    elsif search[":location"]
+      where("location ILIKE ?", "%#{search[":location"]}%")
     elsif search[":description"]
       where("description ILIKE ?", "%#{search[":description"]}%")
-    elsif search[":title"]
-      where("title ILIKE ?", "%#{search[":title"]}%")
+    elsif search[":skills_id"]
+		  where("skills.title ILIKE ?", "%#{search[":skills.title"]}%")
     end
   end
-
-
-
 end
