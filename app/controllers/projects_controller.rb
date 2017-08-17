@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
       @projects.each do |project|
         @projects_by_subject << project.jobs.where(skill_id: @skill.id)
       end
-      
+
       @projects_by_subject.flatten!
 
     else
@@ -37,6 +37,7 @@ class ProjectsController < ApplicationController
     else
       render 'projects/new'
     end
+  end
 
   def edit
 

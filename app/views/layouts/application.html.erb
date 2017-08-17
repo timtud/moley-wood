@@ -13,15 +13,15 @@
       <%= render "layouts/navbar" %>
       <%= render 'layouts/flashes' %>
       <%= yield %>
-      <%= javascript_include_tag "https://maps.google.com/maps/api/js" %>
-      <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
-      <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
+
    </div>
-    <%= render 'layouts/flashes' %>
-    <%= yield %>
+
 
     <%= render "layouts/footer" %>
     <%= javascript_include_tag 'application' %>
     <%= yield(:after_js) %>
+    <%= javascript_include_tag "https://maps.google.com/maps/api/js" %>
+      <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
+      <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
   </body>
 </html>
