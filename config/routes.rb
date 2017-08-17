@@ -13,10 +13,10 @@ Rails.application.routes.draw do
 
   resources :jobs, only: [:destroy ] do
     resources :job_review, only: [ :create ]
-    resources :response, only: [:create]
+    resources :responses, only: [:create]
   end
 
-  resources :response, only: [:destroy, :update]
+  resources :responses, only: [:destroy, :update]
 
   resources :pages, only: [:show]
 end
