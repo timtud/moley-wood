@@ -8,6 +8,8 @@
 .stat-content {
   height: 400px;
   text-align: center;
+  overflow-y: auto;
+  padding: 5px;
 
 }
 
@@ -21,4 +23,17 @@
 
 #component-1{
   margin-top: 20px;
+}
+
+#User_Header{
+  height:80px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#mole-user{
+
+z-index: -1;
 }
