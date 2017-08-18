@@ -1,5 +1,6 @@
-<h1 class="text-center">Jobs</h1>
+
 <div class="container">
+<h1 class="text-center" >Jobs</h1>
 	<div class="container_searchbar col-xs-12">
 		<div class="form-group">
 		<%= form_tag(projects_path, method: :get, id: "search-form") do %>
@@ -21,20 +22,20 @@
 		  	</div>
 
 			<div class="col-xs-3" id="search_button">
-				<%= submit_tag "Dig for projects", name: nil, class: 'btn btn-primary' %>	
-				<% end 	%>	
+				<%= submit_tag "Dig for projects", name: nil, class: 'btn btn-primary' %>
+				<% end 	%>
 		    </div>
 		</div>
 	</div>
-</div>
 
 <% if @jobs.any? %>
-	<div class="container">
+
 		<%= render "project" , projects_by_subject: @jobs %>
-	</div>
+
 <% else %>
 	<p>There are no projects containing the term(s) <%= params[:search] %></p>
 <% end %>
+</div>
 
 
 <%= content_for :after_js do %>
@@ -43,7 +44,7 @@
 	        autoclose: true,    // It is false, by default
 	        format: 'dd/mm/yyyy'
 	    }).on('changeDate', function(e) {
-	        
+
 	    });
 	</script>
 
