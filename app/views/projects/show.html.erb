@@ -78,7 +78,7 @@
 
   <% if current_user == @project.user %>
     <%= simple_form_for [@project, @job] do |f| %>
-      <%=f.input :skill_id , collection: Skill.all  %>
+      <%=f.input :skill_id , collection: Skill.all.order("title ASC")  %>
       <%= f.submit "Add job", class: 'btn btn-primary' %>
       <%= link_to 'Back', projects_path, class: 'btn btn-danger' %>
     <% end %>
