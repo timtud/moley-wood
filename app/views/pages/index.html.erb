@@ -1,0 +1,35 @@
+<div class="text-center mode ">
+<h1 class="text-center">SHOPPING MOLE</h1>
+	<div class="">
+		<div >
+			<h3>Rescue Tobias Intern</h3>
+			<%= cl_image_tag "Screen_Shot_2017-08-18_at_3.58.21_PM_lfxv30", width: 400, height: 400, id: "Tobi" %>
+        </div>
+    </div>
+
+    <br>
+
+    <div>
+    	<h4>Last seen being held hostage by 10,000 horny mole rats. They are demanding caramel macchiatos in exchange. Please donate generously. They are very horny.</h4>
+    </div>
+
+    <br>
+
+   	<button type="button" class="btn btn-danger btn-lg">Feeling Generous</button>
+
+</div>
+
+
+<%= content_for(:after_js) do %>
+	<script>
+		$(document).ready(function() {
+			$(".mode").keyup(function(e){
+				if(e.keyCode === 77)
+					$(".mode").toggleClass("mole");
+			});
+			$(".mode").mousemove(function(e){
+				$(".mode").css('background-position',(e.pageX - 250)+'px '+(e.pageY - 250)+'px');
+			});
+		});
+	</script>
+<% end %>
