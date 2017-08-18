@@ -10,7 +10,7 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "DONATE", "#", class:"btn btn-danger"%>
+      <%= link_to "DONATE", pages_path, class:"btn btn-danger"%>
       <%= link_to "Search", projects_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "New Project", new_project_path, class: "navbar-wagon-item navbar-wagon-link" %>
 

@@ -28,11 +28,11 @@
   </div>
   
   <br>
-<%= link_to "Dig a project", projects_path, class:"btn btn-primary" %>
+<%= link_to "Dig a project", projects_path, class:"btn btn-primary btn-lg" %>
 
 </div>
 
-<% content_for(:after_js) do %>
+<%= content_for(:after_js) do %>
   <%= javascript_tag do %>
 
     function doStuff() {
