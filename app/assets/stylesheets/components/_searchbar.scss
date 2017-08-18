@@ -1,14 +1,16 @@
 .container_searchbar {
 	width: 100%;
 	margin: 0 auto;
-	padding-bottom: 20px;
+	margin-top: 50px;
+	padding-bottom: 150px;
 }
-
 .container_searchfield {
 	display: inline-block;
 }
-
 #eventForm .form-control-feedback {
     top: 0;
     right: -15px;
+}
+#search_button {
+	margin-top: 29px;
 }

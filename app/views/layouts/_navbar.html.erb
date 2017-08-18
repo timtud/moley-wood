@@ -17,7 +17,9 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
+
          <%= cl_image_tag user_avatar(current_user), width: 150, height: 150, crop: :fill, class: "avatar dropdown-toggl  e", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to user_path(current_user) do %>
