@@ -1,9 +1,28 @@
 <div class="container">
-<%= simple_form_for @project do |f| %>
-  <%=f.input :title  %>
-  <%=f.input :description  %>
-  <%=f.input :schedule  %>
-  <%=f.input :location  %>
-  <%= f.submit "Create Project", class: 'btn btn-primary'  %>
-<% end %>
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>New Project</h1>
+    </div>
+  </div>
+  <%= simple_form_for @project do |f| %>
+    <div class="row">
+      <div class="col-xs-12 form-text">
+        <%=f.input :title  %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <%=f.input :description  %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <%=f.input :schedule  %>
+      </div>
+      <div class="col-xs-6">
+        <%=f.input :location  %>
+      </div>
+    </div>
+    <%= f.submit "Burrow Project", class: 'btn btn-primary'  %>
+  <% end %>
 </div>
