@@ -2,34 +2,37 @@
 <div class="container">
   <div class="row">
     <div class="stat col-xs-4">
-      <div class="stat-content">
+      <div class="stat-content" id = "">
       <% if @user.profile_picture? %>
-      <%= cl_image_tag @user.profile_picture.path, width: 150, height: 150, crop: :fill %>
+      <%= cl_image_tag @user.profile_picture.path, width: 280, height: 280,  gravity: "face", radius:"max",  crop: "crop" %>
       <% end %>
-        <h2><%= @user.first_name %> <%= @user.last_name%></h4>
-        <% if @user.age != nil %> <p><%= @user.age%>years old</p><%end%>
-        <% if @user.gender != nil %> <p><%= @user.gender%></p><%end%>
+        <h4><%= @user.first_name %> <%= @user.last_name%></h4>
 
-
-
-        <%= link_to 'edit user', edit_user_registration_path(@user)%>
+        <%= link_to 'Edit', edit_user_registration_path(@user), class: "btn btn-primary" %>
       </div>
     </div>
     <div class="stat col-xs-7">
-      <div class="stat-content">
-        <h3>Bio</h3>
-        <p><%= @user.bio%></p>
+      <div class="stat-content" id = "component-2">
+        <h3>Biography</h3>
+        <% render 'user_info' %>
+            <p><%= @user.bio%></p>
       </div>
+
+    </div>
     </div>
     <div class="row">
       <div class="stat col-xs-4">
         <div class="stat-content">
-          <p>host reviews</p>
+          <div class ="reviews">
+            <h4>Projects</h4>
+          </div>
         </div>
       </div>
       <div class="stat col-xs-7">
         <div class="stat-content">
-          <p>job reviews</p>
+          <div class="reviews">
+            <h4>Job Reviews</h4>
+          </div>
         </div>
       </div>
     </div>
