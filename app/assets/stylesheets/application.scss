@@ -14,6 +14,9 @@
 @import "components/index";
 @import "pages/index";
 @import "users/index";
+@import "projects/index";
+@import "devise/registrations/index";
+@import "devise/sessions/index";
 
 html{
   position: relative;
