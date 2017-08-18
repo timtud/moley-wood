@@ -2,9 +2,10 @@ class JobReviewsController < ApplicationController
 
   def create
     @review = JobReview.new(review_params)
+    @review.job = Job.find(params[:job_id])
     project = @review.job.project
     if @review.save
-      redirect_to projects_path(project)
+      redirect_to project_path(project)
     else
       render 'projects/show'
     end

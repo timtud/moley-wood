@@ -3,7 +3,7 @@ class Job < ApplicationRecord
   belongs_to :skill
   validates :skill_id, presence: true
   has_many :responses
-
+  has_one :job_review
 
 
 
