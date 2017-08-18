@@ -1,37 +1,72 @@
+<div class="page">
 
-<div class="container">
-  <div class="row">
-    <div class="stat col-xs-4">
-      <div class="stat-content">
-      <% if @user.profile_picture? %>
-      <%= cl_image_tag @user.profile_picture.path, width: 150, height: 150, crop: :fill %>
-      <% end %>
-        <h2><%= @user.first_name %> <%= @user.last_name%></h4>
-        <% if @user.age != nil %> <p><%= @user.age%>years old</p><%end%>
-        <% if @user.gender != nil %> <p><%= @user.gender%></p><%end%>
-
-
-
-        <%= link_to 'edit user', edit_user_registration_path(@user)%>
-      </div>
-    </div>
-    <div class="stat col-xs-7">
-      <div class="stat-content">
-        <h3>Bio</h3>
-        <p><%= @user.bio%></p>
+  <div class="container">
+    <div class="row">
+      <div class="stat col-xs-11" id="User_Header">
+        <h1></h1>
+        <h1>Profile</h1>
+        <%= cl_image_tag "wnflcbsbd1ksem8yvjrr", width: 50, height: 50, id: "pencil" %>
       </div>
     </div>
     <div class="row">
       <div class="stat col-xs-4">
-        <div class="stat-content">
-          <p>host reviews</p>
+        <div class="stat-content" >
+        <% if @user.profile_picture? %>
+        <%= cl_image_tag @user.profile_picture.path, width: 280, height: 280,  gravity: "face", radius:"max",  crop: "crop" %>
+        <% end %>
+          <h4><%= @user.first_name %> <%= @user.last_name%></h4>
+
+          <%= link_to 'Edit', edit_user_registration_path(@user), class: "btn btn-primary" %>
         </div>
       </div>
       <div class="stat col-xs-7">
-        <div class="stat-content">
-          <p>job reviews</p>
+        <div class="stat-content" id = "component-2">
+          <h3>Biography</h3>
+          <% render 'user_info' %>
+              <p><%= @user.bio%></p>
+        </div>
+
+      </div>
+      </div>
+      <div class="row">
+        <div class="stat col-xs-4">
+          <div class="stat-content">
+            <div class ="reviews">
+              <h4>Projects</h4>
+            </div>
+            <% current_user.projects.each do |project| %>
+              <div class="list-group">
+                <li class="list-group-item">
+                <div class="list-group-item-header">
+                  <%= project.title %>
+                </div>
+                </li>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="stat col-xs-7">
+          <div class="stat-content">
+            <div class="reviews">
+              <h4>Job Reviews</h4>
+            </div>
+            <% current_user.responses.each do |response| %>
+              <div class="list-group">
+                <li class="list-group-item">
+                <div class="list-group-item-header">
+                  <%= response.job.skill.title %>
+                </div>
+                <% if response.job.job_review %>
+                  <%= response.job.job_review.content   %>
+                          <p><% response.job.job_review.rating.times do %><i style="color: #e5d200;" class="fa fa-star" aria-hidden="true"></i><% end %></p>
+                <% end %>
+                </li>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
