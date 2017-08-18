@@ -18,14 +18,13 @@
 
 
     <% @project.jobs.each do |job| %>
+     <div class="list-group">
+      <li class='list-group-item'>
       <% skill = Skill.find(job.skill_id) %>
-
 
         <h4 class="list-group-item-heading"> <%= skill.title %>
         <%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, job_path(job), class: 'btn btn-danger del ' , method: :delete, data: { confirm: 'Are you certain you want to delete this?' } if current_user == @project.user %></h4>
           <%if current_user == @project.user %>
-            <ul>
-              <li>
                 <% job.responses.each do |response|%>
                 <%= response.user.first_name %>
                 <% if response.status == "pending" %>
@@ -56,9 +55,9 @@
                   <% end %>
                 <% end %>
               <% end %>
-            </li>
+
           <% end %>
-        </ul>
+
       <% elsif user_signed_in? %>
           <% if (job.responses & current_user.responses).empty? %>
                 <%= simple_form_for [job, Response.new] do |f| %>
@@ -71,6 +70,9 @@
           <p> <%= "#{job.responses.count} people applied in total" %></p>
 
       <% end %>
+
+      </li>
+      </div>
   <% end %>
 
 
