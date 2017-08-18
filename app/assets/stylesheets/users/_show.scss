@@ -1,13 +1,39 @@
 .stat {
   background-color: white;
-  border-radius: 5px;
   margin: 5px;
   height: 400px;
   box-shadow: 2px 2px 2px #CECECE;
 }
 
 .stat-content {
-  margin: 10px;
   height: 400px;
   text-align: center;
+  overflow-y: auto;
+  padding: 5px;
+
+}
+
+.list{
+  text-align: left;
+}
+
+.reviews {
+  margin-top: 10px;
+}
+
+#component-1{
+  margin-top: 20px;
+}
+
+#User_Header{
+  height:80px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#mole-user{
+
+z-index: -1;
 }
