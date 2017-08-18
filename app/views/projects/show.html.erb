@@ -1,11 +1,13 @@
 <div class="container ">
-  <div class="text-center title">
-
+<div class="row">
+<div class="col-xs-12">
+  <div class="text-center title ">
     <h1>  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i>'.html_safe, projects_path %></h1>
-    <h1>  <%= @project.title %></h1>
-    <h1></h1>
+    <h1>  <%= @project.title.capitalize %></h1>
+    <h1 style="color: gold;margin-right: 10px;"><i class="fa fa-trophy" aria-hidden="true"></i></h1>
   </div>
-
+  </div>
+</div>
   <div class="row">
     <div class="col-xs-4">
       <div class="description">
